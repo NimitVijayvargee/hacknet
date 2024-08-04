@@ -23,6 +23,8 @@ function dark_mode() {
   setMouseMoveListener('#343a40', '#212529');
   document.cookie = "theme=dark";
   console.log("Dark mode set");
+  var logo = document.getElementsByClassName("logo")[0];
+  logo.setAttribute("data-bs-theme","dark");
 }
 
 function arcade_mode() {
@@ -33,7 +35,8 @@ function arcade_mode() {
   setMouseMoveListener('rgba(132, 146, 166, 0)', 'rgba(250, 239, 214, 0.9)');
   document.cookie = "theme=arcade";
   console.log("Arcade mode set");
-
+  var logo = document.getElementsByClassName("logo")[0];
+  logo.setAttribute("data-bs-theme","arcade");
 }
 
 function last_theme() {

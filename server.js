@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 app.get('/users/:username',(req,res) => {
    const username = req.params.username;
-   res.send(`ID: ${username}`)
+   res.render(path.join(__dirname, "public", "users.html"), {user:username})
 })
 
 app.get('')

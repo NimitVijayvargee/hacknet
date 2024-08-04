@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Slackey&display=swap');
 
-
-
 [data-bs-theme="arcade"] {
     --bs-body-bg: rgb(250, 239, 214) !important;
     --bs-body-bg-rgb: 250, 239, 214 !important;
@@ -16,5 +14,20 @@
     --streak-color-rgb: 216, 165, 45 !important;
 
     --bs-body-color: rgb(255, 140, 55) !important;
-    --body-font: Slackey; /*signature arcade font*/
+    --body-font: 'Slackey', sans-serif;
+    /* signature arcade font */
+}
+
+.logo[data-bs-theme="arcade"]{
+    font-family: 'Slackey', sans-serif;
+    color: #FF5C00 !important;
+    text-shadow: -2px -2px #FAEFD6, -1.5px -1.5px #FAEFD6, -1px -1px #FAEFD6,
+        -1px -1px #FAEFD6, -0.5px -0.5px #FAEFD6, -0.5px -0.5px #FAEFD6,
+        -0.5px -0.5px #FAEFD6, 0.5px 0.5px #FAEFD6, 0.5px 0.5px #FAEFD6,
+        0.5px 0.5px #FAEFD6, 1px 1px #FAEFD6, 2px 2px #FAEFD6,
+        1.5px 1.5px #FAEFD6, -4px -4px #09AFB4, -3px -3px #09AFB4,
+        -2.5px -2.5px #09AFB4, -2px -2px #09AFB4, -1.5px -1.5px #09AFB4,
+        -1px -1px #09AFB4, 1px 1px #09AFB4, 1.5px 1.5px #09AFB4,
+        2.5px 2.5px #09AFB4, 2px 2px #09AFB4, 3.5px 3.5px #09AFB4,
+        3px 3px #09AFB4, 4px 4px #09AFB4, -4px -4px #09AFB4, 4.5px 4.5px #09AFB4, -4.5px -4.5px #09AFB4, 5px 5px #09AFB4, -5px -5px #09AFB4;
 }

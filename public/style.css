@@ -1,3 +1,9 @@
+/* Essential Styles */
+body {
+    overflow-x: hidden;
+    background-size: 40px 40px;
+}
+
 #container {
     height: 100%;
     padding-top: 50px;
@@ -5,16 +11,26 @@
     background-attachment: fixed;
 }
 
+/* Post Styles */
 .post {
     background: rgb(var(--bs-secondary-bg-rgb));
     backdrop-filter: blur(2px);
     border-radius: 30px;
     padding: 10px;
     padding-top: 10px;
-    margin : 50px;
+    margin: 50px;
     transition: 0.5s;
 }
 
+.post:hover {
+    transform: scale(1.01);
+}
+
+.content {
+    margin: 10px;
+}
+
+/* User Info Styles */
 .user-info {
     background: var(--bs-dark-bg-subtle);
     border-radius: 20px;
@@ -49,26 +65,7 @@
     display: inline-block;
 }
 
-.streak-image {
-    max-width: 10%;
-    opacity: 0.4;
-}
-
-body {
-    overflow-x: hidden;
-    background-size: 40px 40px;
-}
-
-.thumbnail {
-    max-width: 90%;
-    margin: 5%;
-    border-radius: 30px;
-}
-
-.content {
-    margin: 10px;
-}
-
+/* Tag Styles */
 .tag {
     background-color: rgba(var(--bs-tertiary-bg-rgb), 1);
     padding: 3px;
@@ -82,6 +79,9 @@ body {
     vertical-align: middle;
 }
 
-.post:hover {
-    transform: scale(1.01);
+/* Thumbnail Styles */
+.thumbnail {
+    max-width: 90%;
+    margin: 5%;
+    border-radius: 30px;
 }
