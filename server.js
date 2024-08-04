@@ -5,19 +5,24 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 6942;
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.render('index', { title: 'Hacknet' });
 });
 
 app.get('/users/:username',(req,res) => {
-   const username = req.params.username;
-   res.render(path.join(__dirname, "public", "users.html"), {user:username})
+  const username = req.params.username;
+  res.render('user', { title: `Profile of ${username}`, username: username });
 })
 
-app.get('')
+app.get('*', function(req, res){
+  res.status(404).send('404 Not Found');
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+

@@ -15,6 +15,9 @@
 
     --bs-body-color: rgb(255, 140, 55) !important;
     --body-font: 'Slackey', sans-serif;
+
+    --bs-primary:rgb(255, 140, 55) !important;
+    --bs-primary-rgb: 255,140,55 !important;
     /* signature arcade font */
 }
 

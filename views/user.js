@@ -1,7 +1,6 @@
-const res = require("express/lib/response");
-const path = require('path');
-window.onload(last_theme())
-function back_to_top(){
+
+window.onload = last_theme()
+function back_to_top() {
   document.scrollY = 0;
 }
 function setMouseMoveListener(color1, color2) {
@@ -24,7 +23,7 @@ function dark_mode() {
   document.cookie = "theme=dark";
   console.log("Dark mode set");
   var logo = document.getElementsByClassName("logo")[0];
-  logo.setAttribute("data-bs-theme","dark");
+  logo.setAttribute("data-bs-theme", "dark");
 }
 
 function arcade_mode() {
@@ -36,7 +35,7 @@ function arcade_mode() {
   document.cookie = "theme=arcade";
   console.log("Arcade mode set");
   var logo = document.getElementsByClassName("logo")[0];
-  logo.setAttribute("data-bs-theme","arcade");
+  logo.setAttribute("data-bs-theme", "arcade");
 }
 
 function last_theme() {
@@ -70,10 +69,14 @@ window.addEventListener('load', function () {
 
 async function addPosts() {
   try {
-    console.log("scraping scrapbook scraps from scrapbook to scrapbook people's scraps...")
-    const response = await fetch('https://scrapbook.hackclub.com/api/posts');
-    console.log("scrapped succesfully; updating website")
-    const posts = await response.json();
+    console.log("scraping scrapbook scraps from scrapbook to scrapbook people's scraps...");
+    const response = await fetch(`https://scrapbook.hackclub.com/api/users/${username}`);
+    if (response.status === 404) {
+      console.log(`404, User not found. Given Username: ${username}`);
+      return null;
+    }
+    console.log("scrapped succesfully; updating website");
+    const posts = await response.json().posts;
     const postsContainer = document.getElementById('container');
     console.log(posts);
     posts.forEach(post => {
@@ -115,8 +118,8 @@ async function addPosts() {
 
 function convertToAnchorTag(inputString) {
   const urlRegex = /<([^>]+)>/g;
-  return inputString.replace(urlRegex, function(match, url) {
-      return `<a href="${url}">${url}</a>`;
+  return inputString.replace(urlRegex, function (match, url) {
+    return `<a href="${url}">${url}</a>`;
   });
 }
 
