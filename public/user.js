@@ -1,5 +1,5 @@
 
-window.onload = last_theme()
+window.onload = last_theme;
 function back_to_top() {
   document.scrollY = 0;
 }
@@ -67,18 +67,26 @@ window.addEventListener('load', function () {
   last_theme();
 });
 
-async function addPosts() {
+async function addPosts(username) {
   try {
-    console.log("scraping scrapbook scraps from scrapbook to scrapbook people's scraps...");
+    console.log("Scraping scrapbook scraps...");
     const response = await fetch(`https://scrapbook.hackclub.com/api/users/${username}`);
-    if (response.status === 404) {
-      console.log(`404, User not found. Given Username: ${username}`);
-      return null;
+
+    if (!response.ok) {
+      console.log(`HTTP error! status: ${response.status}`);
+      return;
     }
-    console.log("scrapped succesfully; updating website");
-    const posts = await response.json().posts;
+
+    const data = await response.json();
+    console.log("API Response:", data); // Log the entire API response
+
+    const posts = data.posts; // Access the posts array
+    if (!posts) {
+      console.error("No posts found in API response");
+      return;
+    }
+
     const postsContainer = document.getElementById('container');
-    console.log(posts);
     posts.forEach(post => {
       const postElement = document.createElement("div");
       postElement.className = 'row';
@@ -87,12 +95,14 @@ async function addPosts() {
         <div class="blank col-lg-3 col-sm-0"></div>
         <div class="post col-lg-6 col-sm-12">
           <div class="user-info">
-            <img class="avatar col-sm-2" src="${post.user.avatar}" alt="${post.user.username}'s avatar">
+            <img class="avatar col-sm-2" src="${data.profile.avatar}" alt="${data.profile.username}'s avatar">
             <div class="name col-sm-6">
-              <div class="displayname"><a href="/users/${post.user.username}/">${post.user.username}</a></div>
-              <div class="smaller-text">${post.user.username}</div>
+              <div class="displayname"><a href="/users/${data.profile.username}/">${data.profile.username}</a></div>
+              <div class="smaller-text">${data.profile.username}</div>
             </div>
-            <div class="streak col-sm-4" style="font-size: 150%; text-align: right; vertical-align: middle;">${post.user.streakCount}</div>
+            <div class="streak col-sm-4" style="font-size: 150%; text-align: right; vertical-align: middle;">
+              ${data.profile.streakCount}
+            </div>
           </div>
           ${post.attachments.length > 0 ? `<img class="thumbnail" src="${post.attachments[0]}" alt="Post thumbnail">` : ''}
           <p class="content">${convertToAnchorTag(post.text)}</p>
@@ -110,11 +120,10 @@ async function addPosts() {
 
       postsContainer.appendChild(postElement);
     });
-    console.log("scraps are now visible on site, close the console nerd")
   } catch (error) {
-    console.error('Error fetching posts:', error);
+    console.error("Failed to fetch posts:", error);
   }
-};
+}
 
 function convertToAnchorTag(inputString) {
   const urlRegex = /<([^>]+)>/g;
@@ -123,5 +132,6 @@ function convertToAnchorTag(inputString) {
   });
 }
 
-addPosts();
+addPosts(user);
 last_theme();
+console.log("user.js is loaded");

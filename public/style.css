@@ -28,6 +28,7 @@ body {
 
 .content {
     margin: 10px;
+    text-wrap: break-word;
 }
 
 /* User Info Styles */
@@ -91,3 +92,4 @@ a:not(.nav-link, .nav-link-active, .dropdown-item){
     text-decoration: none !important;
     color: var(--bs-primary) !important;
 }
+
