@@ -17,6 +17,10 @@ app.get('/users/:username',(req,res) => {
   const username = req.params.username;
   res.render('user', { title: `Profile of ${username}`, username: username });
 })
+app.get('/tags/:tag',(req,res) => {
+  const tag = req.params.tag;
+  res.render('tag', { title: `Posts with ${tag}`, tag: tag });
+})
 
 app.get('*', function(req, res){
   res.status(404).send('404 Not Found');
